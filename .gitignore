@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+
+# Virtual Environment
+venv_flounder/
+
+# Sensitive files
+config.py
+key
+
+# Logs
+*.log

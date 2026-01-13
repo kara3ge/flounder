@@ -1,0 +1,15 @@
+Remote ollama server "client/front-end" for ollama API via a VPN(Hamachi). 
+Allows for:
+-User-centric interaction
+-remote model pull/delete
+-remote model generate/chat/embeddings calls
+-remote model creation via modelFile upload
+
+servers handle all ollama interaction internally
+clients just update server modelfiles 
+
+currently hamachi_manager is linux only
+hamachi manager needs "path" --cli to run hamachi commands
+
+csv for logs
+json for modelfiles #Reconfigure data folder

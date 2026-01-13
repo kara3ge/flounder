@@ -1,0 +1,63 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 3em repeat(4, 1fr);
+    grid-template-areas:
+        "banner banner banner banner banner banner"
+        "job-bar info info info info info"
+        "job-bar main main main main main"
+        "job-bar main main main main main"
+        "job-bar terminal terminal terminal terminal footer";
+}
+
+.banner {
+    grid-area: banner;
+    color: #00e1ff;
+    background-color: #31313b;
+}
+
+.info {
+    grid-area: info;
+    background-color: #0000ff;
+}
+
+.job-bar {
+    grid-area: job-bar;
+    background-color: #00ff00;
+}
+
+.main {
+    grid-area: main;
+    background-color: #ff0000;
+}
+
+.terminal {
+    color: #00e1ff;
+    grid-area: terminal;
+    background-color: #35353b;
+    display: grid;
+    grid-template-rows: 1fr 3em;
+    grid-template-columns: 1fr 4em;
+    grid-template-areas:
+        "terminal-output terminal-output"
+        "terminal-input-area terminal-input-submit";
+}
+#terminal-output {
+    grid-area: terminal-output;
+}
+#terminal-input-area {
+    grid-area: terminal-input-area;
+    overflow-y: auto;
+    resize: none;
+}
+#terminal-input-submit {
+    grid-area: terminal-input-submit;
+}
+.footer {
+    grid-area: footer;
+    background-color: #e1ff00;
+}

@@ -1,0 +1,9 @@
+{
+    "test.model": {
+        "base": "llama3.2",
+        "author": "test",
+        "description": "test model",
+        "last_update": "2026-01-12",
+        "last_ollama_update": "2026-01-12"
+    }
+}
