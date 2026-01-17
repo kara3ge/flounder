@@ -1,0 +1,14 @@
+<head>
+    <title>Server: Flounder</title>
+</head>
+
+<body>
+    <div id = login-container>
+    <form id = "login-card" method="POST" action="/authcheck">
+        <input type="text" name="username" placeholder="username" id="username" class="login-field">
+        <input type="password" name="password" aria-placeholder="password" id="password" class="login-field">
+        <button type="submit" id="login-btn" class="login-field">Login</button>
+      </form>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </div>
+</body>

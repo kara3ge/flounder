@@ -7,11 +7,18 @@
     <div class="info"></div>
     <div class="job-bar"></div>
     <div class="main"></div>
-    <div class="terminal">
-        <div class="terminal-output"></div>
-        <textarea id="terminal-input-area"></textarea>
-        <button id="terminal-input-submit">Submit</button>
-    </div>
+    <form id="terminal">
+        <div id="terminal-output">
+            <div class="terminal-text">Welcome to Flounder Remote Server Interface: beta v0.1.0</div>
+        </div>
+        <input id="terminal-input-area"/>
+    </form>
     <div class="footer"></div>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/graphs.js') }}"></script>
+    <!-- terminal -->
+    <script src="{{ url_for('static', filename='js/terminal.js') }}"></script>
+
 </body>

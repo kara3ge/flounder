@@ -1,4 +1,7 @@
 import subprocess
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from config import config, paths
 import time
 import glob
@@ -16,6 +19,13 @@ class OllamaManager:
         os.environ["OLLAMA_HOST"] = str(self.server_ip)
         self.server_process = None
         self.models = self.ollama_list()
+        self.commands = {
+            "list": "list",
+            "pull": "pull",
+            "remove": "remove",
+            "create": "create",
+            "close": "close",
+        }
 
     def ollama_serve(self):
         print("Ollama service starting")
@@ -25,7 +35,6 @@ class OllamaManager:
             return f"Error starting ollama server: Check if the port is already in use."
         return f"Started ollama server on {self.ip}:{config["ollama_port"]} successfully."
             
-
     def ollama_list(self):
         print("Listing models...")
         output = subprocess.run(["ollama","list"], capture_output=True, text=True).stdout.split("\n")

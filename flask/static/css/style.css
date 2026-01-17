@@ -1,3 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --black: #0a0a0a;
+    --dark-grey: #1a1a1a;
+    --grey: #2a2a2a;
+    --light-grey: #3a3a3a;
+    --lighter-grey: #4a4a4a;
+    --light-blue: #87CEEB;
+    --medium-blue: #5F9EA0;
+    --accent-blue: #00BFFF;
+}
+
+body, html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--black);
+    color: #d1d1d1;
+}
+
+#login-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+#login-card {
+    height: 80vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+    .login-field {      /* prevents vertical stretching */
+        width: 80%;             /* control horizontal width */
+        max-width: 300px;       /* optional */
+        padding: 0.5rem;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
 .container {
     height: 100vh;
     width: 100vw;
@@ -5,7 +53,7 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 3em repeat(4, 1fr);
+    grid-template-rows: 3em repeat(4, minmax(0, 1fr));
     grid-template-areas:
         "banner banner banner banner banner banner"
         "job-bar info info info info info"
@@ -16,48 +64,140 @@
 
 .banner {
     grid-area: banner;
-    color: #00e1ff;
-    background-color: #31313b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2em;
+    color: var(--light-blue);
+    background: linear-gradient(90deg, var(--dark-grey) 0%, var(--grey) 75%, var(--light-blue) 100%);
+    border-bottom: 2px solid var(--black);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .info {
     grid-area: info;
-    background-color: #0000ff;
+    background-color: var(--dark-grey);
+    min-height:0;
+    min-width:0;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+        "graph-container-1 graph-container-2 graph-container-3 graph-container-4 graph-container-5 graph-container-6";
+    border: 1px solid var(--grey);
 }
+    .graph-container {
+        min-height:0;
+        min-width:0;
+        max-height:100%;
+        max-width:100%;
+        margin: 0;        
+        padding: 0.5em;
+        align-items: center;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--grey);
+        border-radius: 4px;
+        border: 1px solid var(--light-grey);
+    }
+    .graph-title {
+        text-align: center;
+        font-size: 0.9em;
+        font-weight: 500;
+        margin: 0;
+        padding: 0.25em 0;
+        color: var(--light-blue);
+    }
+    .graph {
+        flex: 1 1 auto;
+        opacity: 0.3;
+        min-height:0;
+        min-width:0;
+        max-height:90%;
+        max-width:90%;
+        overflow: hidden;
+    }
+    .graph:hover {
+        opacity: 1;
+    }
 
 .job-bar {
     grid-area: job-bar;
-    background-color: #00ff00;
+    background-color: var(--dark-grey);
+    border-right: 1px solid var(--grey);
 }
 
 .main {
     grid-area: main;
-    background-color: #ff0000;
+    background-color: var(--black);
+    border: 1px solid var(--grey);
 }
 
-.terminal {
-    color: #00e1ff;
+#terminal {
+    color: var(--light-blue);
     grid-area: terminal;
-    background-color: #35353b;
+    background-color: var(--dark-grey);
     display: grid;
-    grid-template-rows: 1fr 3em;
-    grid-template-columns: 1fr 4em;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    border: 1px solid var(--grey);
+    grid-template-rows: minmax(0, 1fr) 2em;
+    grid-template-columns: 1fr ;
     grid-template-areas:
-        "terminal-output terminal-output"
-        "terminal-input-area terminal-input-submit";
+        "terminal-output"
+        "terminal-input-area";
 }
-#terminal-output {
-    grid-area: terminal-output;
-}
-#terminal-input-area {
-    grid-area: terminal-input-area;
-    overflow-y: auto;
-    resize: none;
-}
-#terminal-input-submit {
-    grid-area: terminal-input-submit;
-}
+    #terminal-output {
+        grid-area: terminal-output;
+        overflow-y: auto;
+        min-height: 0;
+        background-color: var(--grey);
+        padding: 0.5em;
+    }
+        .terminal-text {
+            text-align: left;
+            font-size: 0.9em;
+            font-weight: 400;
+            margin: 0;
+            padding: 0.25em 0;
+            color: var(--light-blue);
+        }
+    #terminal-input-area {
+        grid-area: terminal-input-area;
+        overflow-y: auto;
+        resize: none;
+        min-height: 0;
+        background-color: rgba(42, 42, 42, 0.8);
+        border: 1px solid var(--light-grey);
+        color: var(--light-blue);
+        padding: 0.5em;
+        font-family: 'Inter', monospace;
+        outline: none;
+    }
+    #terminal-input-area:focus {
+        outline: none;
+        border-color: rgba(0, 191, 255, 0.0);
+    }
+    #terminal-input-submit {
+        min-height: 0;
+        grid-area: terminal-input-submit;
+        background-color: var(--medium-blue);
+        border: 1px solid var(--light-grey);
+        color: white;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    #terminal-input-submit:hover {
+        background-color: var(--accent-blue);
+    }
 .footer {
     grid-area: footer;
-    background-color: #e1ff00;
+    background-color: var(--dark-grey);
+    border-top: 1px solid var(--grey);
+    border-left: 1px solid var(--grey);
 }
