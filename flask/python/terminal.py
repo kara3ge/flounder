@@ -42,11 +42,9 @@ def execute_command(command):
     elif type == "ham":
         response["stdout"] = HamachiManager.command_run(command_list[1:])
     elif type == "cli":
-        if command_list[1] != "--force":
-            return "cli Error: --force flag is required to force command execution"
         try:
             #needs to run in the correct cli environment.
-            response["stdout"] = subprocess.run(command_list[2:], capture_output=True, text=True ).stdout
+            response["stdout"] = subprocess.run(command_list[1:], capture_output=True, text=True ).stdout
         except Exception as e:
             response["error"] = f"Error executing command: {e}"
     else:

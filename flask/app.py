@@ -1,19 +1,22 @@
 from datetime import datetime
 from flask import Flask, render_template, jsonify, request, redirect, url_for, session
 import time
-import python.stats as stats
-import python.terminal as terminal
 import json
-from config import config
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import load_config
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 
+load_config(sys.argv[1])
+from config import config
 app = Flask(__name__)
-app.secret_key = config["flounder-secet-key"] #should be environ but xdd
+app.secret_key = config["flounder_secret_key"] #should be environ but xdd
 
 # Configuration
 app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['DEBUG'] = True
+app.config['DEBUG'] = config["debug"]
 
 
 @app.route('/')
@@ -78,4 +81,6 @@ def info_update():
     return jsonify(data)
     
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    import python.stats as stats
+    import python.terminal as terminal
+    app.run(host=config["server_ip"], port=config["flask_port"])

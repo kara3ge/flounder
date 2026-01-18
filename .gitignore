@@ -3,9 +3,10 @@ __pycache__/
 
 # Virtual Environment
 venv_flounder/
+package.sh
 
 # Sensitive files
-config.py
+config.json
 key
 
 # Logs

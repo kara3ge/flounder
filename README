@@ -13,3 +13,18 @@ hamachi manager needs "path" --cli to run hamachi commands
 
 csv for logs
 json for modelfiles #Reconfigure data folder
+
+UI should:
+- show models available (size)
+- show server CPU usage - pie chart
+- show server memory usage - pie chart
+
+- show server storage- candle bar graph
+- show jobs running/ jobs completed/failed - jobs sidebar
+- jobs window
+- (logs window) show logs from serverlog.csv - logs window
+- have a command panel to send commands to the server
+
+Issue:
+- load_config runs multiple times
+CSRF VALIDATION
