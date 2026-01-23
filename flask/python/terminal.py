@@ -42,11 +42,11 @@ def execute_command(command):
     elif type == "olm":
         pass
     elif type == "ham":
-        response["stdout"] = HamachiManager.command_run(command_list[1:])
+        response["stdout"] = HamachiManager.command_run(command_list)
     elif type == "cli":
         try:
             #needs to run in the correct cli environment.
-            response["stdout"] = subprocess.run(command_list[1:], capture_output=True, text=True).stdout
+            response["stdout"] = subprocess.run(command_list, capture_output=True, text=True).stdout
         except Exception as e:
             response["error"] = f"Error executing command: {e}"
     else:
