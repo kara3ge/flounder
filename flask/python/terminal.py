@@ -20,9 +20,11 @@ def execute_command(command):
     #cmd parse:
     response = {}
     command_list = command.split(" ")
+    type = command_list.pop(0).lower()
     if config["os"] == "Windows":
-        pass
-    type = command_list[0].lower()
+        command_list = ["powershell.exe"] + command_list
+    elif config["os"] == "Linux":
+        command_list = command_list
     if type == "help":
         pass
     elif type == "flounder":
@@ -44,7 +46,7 @@ def execute_command(command):
     elif type == "cli":
         try:
             #needs to run in the correct cli environment.
-            response["stdout"] = subprocess.run(command_list[1:], capture_output=True, text=True ).stdout
+            response["stdout"] = subprocess.run(command_list[1:], capture_output=True, text=True).stdout
         except Exception as e:
             response["error"] = f"Error executing command: {e}"
     else:
